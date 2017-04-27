@@ -1,0 +1,42 @@
+<div class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a><span class="close" ng-click="ctrl.dismiss()"></span></a>
+                <img ng-src="{{ctrl.imageUrl}}" />
+                <class="item-name">{{ctrl.name}}</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-tracks" ng-if="ctrl.tracks">
+                  <p>Tracks</p>
+                  <ul>
+                    <li ng-repeat="track in ctrl.tracks">
+                      <span class="title">
+                        {{track.name}}
+                      </span>
+                      <span class="small">
+                        {{track.duration_ms | trackDuration}}
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <div ng-if="ctrl.albums" class="modal-albums">
+                    <p>Albums</p>
+                    <ul>
+                      <li ng-repeat="album in ctrl.albums">
+                        <span class="title">
+                          <img ng-src="{{album.images[0].url || ''}}"/>
+                          {{album.name}}
+                        </span>
+                        <span class="small">
+                        </span>
+                      </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop"></div>
