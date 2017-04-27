@@ -1,0 +1,62 @@
+<div class="header">
+    <div>
+        <span class="gl-logo"></span>
+        <span class="powered">Powered by Spotify</span>
+    </div>
+    <span class="headphones"></span>
+    <span class="page-down"></span>
+</div>
+<div class="search-wrap">
+    <span>
+        <input
+            type="search"
+            class="search-box"
+            ng-model="terms"
+            ng-minlength=3
+            required
+            placeholder="Search for artist or album title"
+        />
+        <button
+            type="search"
+            class="search-btn"
+            ng-click="search()"
+        >SEARCH</button>
+    </span>
+</div>
+<div class="results">
+    <div class="no-results" ng-if="!results">
+        <span class="magnify"></span>
+        Your results will appear here
+    </div>
+    <ul class="results-list" ng-if="results">
+        <li ng-repeat="album in results.albums.items" class="album" ng-click="loadAlbumDetails(album.id, album.imageUrl, album.name)">
+            <img ng-src={{album.imageUrl}} alt="Cover for {{album.name}}"/>
+            <div class="hover">
+                <span class="cover"></span>
+                <span class="cover-text">View Tracks</span>
+            </div>
+            <span class="icon"></span>
+
+                <span class="name">{{album.name}}</span>
+
+        </li>
+        <li ng-repeat="artist in results.artists.items" class="artist" ng-click="loadArtistDetails(artist.id, artist.imageUrl, artist.name)">
+            <img ng-src={{artist.imageUrl}} alt="Cover for {{artist.name}}"/>
+            <div class="hover">
+                <span class="cover"></span>
+                <span class="cover-text">View Albums</span>
+            </div>
+            <span class="icon"></span>
+
+                <span class="name">{{artist.name}}</span>
+
+        </li>
+    </ul>
+    <div ng-if="results" class="show-more">
+        <button
+            type="search"
+            class="search-btn"
+            ng-click="loadMore()"
+        >SHOW ME MORE</button>
+    </div>
+</div>
